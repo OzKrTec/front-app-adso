@@ -1,14 +1,21 @@
 import {createRouter, createWebHistory} from 'vue-router'
-import Ejemplo from '../views/ejemplo.vue'
 import Paises from '../views/paises.vue'
+import LayoutMain from '../components/LayoutMain.vue'
+import Login from '../components/Login.vue'
 
 const routes =[
 
 {
-    path:'/cargos',
-    name:'Cargos',
-    component:Ejemplo,
+    path:'/',
+    name:'home',
+    component:LayoutMain,
 },
+{
+    path:'/login',
+    name:'login',
+    component:Login,
+},
+
 {
     path:'/pais',
     name:'Paises',
