@@ -1,5 +1,5 @@
 <template>
-    <el-row class="tac" style="height: 100%;">
+    <el-row >
       <el-col :span="12" class="sidebar">
         <el-menu
           default-active="1"
@@ -41,7 +41,7 @@
   html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
+    /* height: 100%; */
   }
   
   .sidebar {

@@ -1,5 +1,6 @@
 import {createRouter, createWebHistory} from 'vue-router'
-import Paises from '../views/paises.vue'
+import Paises from '../views/paises/paises.vue'
+import Cargos from '../views/cargos/cargos.vue'
 import LayoutMain from '../components/LayoutMain.vue'
 import Login from '../components/Login.vue'
 
@@ -20,6 +21,11 @@ const routes =[
     path:'/pais',
     name:'Paises',
     component: Paises,
+},
+{
+    path:'/cargos',
+    name:'Cargos',
+    component: Cargos,
 }
 
 ]
