@@ -4,16 +4,23 @@
       <Header 
       :titulo="'Paises'"
       :tituloBoton="'Crear Pais'"
-      >
-      </Header>
-      <!-- componente/ -->
-      <Formulario :titulo="'titulo del dformulario'">
+      :abrir="abrirFormulario"
+      />
+      
+
+      <Formulario :titulo="'titulo del Formulario'" v-model:is-open="mostrarFormulario"  >
 
         <template #slotForm>
-          <formPaises/>
+          <el-row :gutter="20">
+            <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
+          <formPaises   
+            v-model:is-open="mostrarFormulario"  
+          />
+        </el-col>
+      </el-row>
         </template>
 
-      </Formulario>
+      </Formulario>      
 
           <el-table :data="tableData" stripe style="width: 100%">
             <el-table-column prop="name" label="Nombre" width="180" />
@@ -42,6 +49,12 @@
   import Formulario from '../../components/Formulario.vue';
   import Header from '../../components/Header.vue';
   import  {Delete,Edit} from "@element-plus/icons-vue"
+
+  const mostrarFormulario = ref(false)
+
+  const abrirFormulario =()=>{
+    mostrarFormulario.value=true
+  }
 
 
   const tableData = [

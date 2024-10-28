@@ -1,7 +1,12 @@
 <template>
-        <h1>Este es el formlario de paises</h1>
-
-</template>
+        <el-card style="max-width: 100%">
+          <el-row>
+            <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
+                <h1>Formulario paises</h1>
+            </el-col>
+          </el-row>
+        </el-card>
+      </template>
 
 
 <script setup>

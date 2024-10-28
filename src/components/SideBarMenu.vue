@@ -1,8 +1,8 @@
 <template>
-    <el-row >
-      <el-col :span="12" class="sidebar">
+
         <el-menu
-          default-active="1"
+        :default-active="$route.path"
+        router
           class="el-menu-vertical-demo"
           background-color="#242629"
           text-color="#fff"
@@ -14,9 +14,9 @@
               <span>Administrador</span>
             </template>
   
-            <el-menu-item index="1-2">Personas</el-menu-item>
-            <el-menu-item index="1-3">Cargos</el-menu-item>
-            <el-menu-item index="1-4">Paises</el-menu-item>
+            <el-menu-item index="personas">Personas</el-menu-item>
+            <el-menu-item index="cargos">Cargos</el-menu-item>
+            <el-menu-item index="pais">Paises</el-menu-item>
           </el-sub-menu>
           <el-sub-menu index="2">
             <template #title>
@@ -26,11 +26,9 @@
   
             <el-menu-item index="1-2">Personas</el-menu-item>
             <el-menu-item index="1-3">Cargos</el-menu-item>
-            <el-menu-item index="1-4">Paises</el-menu-item>
+            <el-menu-item index="pais">Paises</el-menu-item>
           </el-sub-menu>
         </el-menu>
-      </el-col>
-    </el-row>
   </template>
   
   <script lang="ts" setup>
@@ -44,13 +42,11 @@
     /* height: 100%; */
   }
   
-  .sidebar {
-    height: 100vh;
-    overflow-y: auto; 
-  }
+
   
   .el-menu-vertical-demo {
-    height: 100%; 
+    width: 250px;
+    min-height: 100%;
   }
   </style>
   
