@@ -8,13 +8,12 @@
       />
       
 
-      <Formulario :titulo="'titulo del Formulario'" v-model:is-open="mostrarFormulario"  >
-
+      <Formulario :titulo="'Gestion de Paises'" v-model:is-open="mostrarFormulario" :is-edit="editandoFormulario"  >
         <template #slotForm>
           <el-row :gutter="20">
             <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
           <formPaises   
-            v-model:is-open="mostrarFormulario"  
+            v-model:is-open="mostrarFormulario" :is-edit="editandoFormulario"  
           />
         </el-col>
       </el-row>
@@ -28,7 +27,7 @@
             <el-table-column prop="phone" label="Telefono" />
             <el-table-column fixed="right" label="Acciones" min-width="120">
               <template #default>
-                <el-button link type="primary" size="large" :icon="Edit" >                  
+                <el-button link type="primary" size="large" :icon="Edit" @click="editarFormulario" >                  
                 </el-button>
                 <el-button link type="danger" :icon="Delete" ></el-button>
               </template>
@@ -51,11 +50,17 @@
   import  {Delete,Edit} from "@element-plus/icons-vue"
 
   const mostrarFormulario = ref(false)
+  const editandoFormulario = ref(false)
 
   const abrirFormulario =()=>{
     mostrarFormulario.value=true
+    editandoFormulario.value=false
   }
 
+  const editarFormulario= async()=>{
+    mostrarFormulario.value=true
+    editandoFormulario.value=true
+  }
 
   const tableData = [
   {

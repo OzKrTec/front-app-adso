@@ -26,7 +26,8 @@ const routes =[
     path:'/cargos',
     name:'Cargos',
     component: Cargos,
-}
+},
+
 
 ]
 
