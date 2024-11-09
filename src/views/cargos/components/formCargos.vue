@@ -1,14 +1,6 @@
-
 <template>
-  <el-form
-    ref="formRef"
-    style="max-width: 100%"
-    :model="formulario"
-    :rules="rulesForm"
-    label-width="auto"
-    :size="formSize"
-    status-icon
-  >
+  <el-form ref="formRef" style="max-width: 100%" :model="formulario" :rules="rulesForm" label-width="auto"
+    :size="formSize" status-icon>
     <el-form-item label="Nombre" prop="nombre">
       <el-input v-model="formulario.nombre" />
     </el-form-item>
@@ -17,13 +9,8 @@
     </el-form-item>
     <el-form-item label="Area" prop="area">
       <el-select v-model="formulario.area" placeholder="Seleccione un area">
-        <el-option v-for="area in areas"
-        :key="area.id"
-        :label="area.nombre"
-        :value="area.id"
-        
-        />
-   
+        <el-option v-for="area in areas" :key="area.id" :label="area.nombre" :value="area.id" />
+
       </el-select>
     </el-form-item>
 
@@ -32,15 +19,14 @@
 
 <script setup>
 
-import { reactive, ref } from 'vue'
-
-
+import { onMounted, reactive, ref, watch } from 'vue'
 
 const propiedad = defineProps({
   areas: {
-    type:Array,
-    required:true
-  }
+    type: Array,
+    required: true,
+  },
+  dataValue: Object,
 });
 
 const formSize = ref('default')
@@ -52,6 +38,13 @@ const formulario = reactive({
 
 })
 
+const datosFormulario = () => {
+
+  formulario.nombre = propiedad.dataValue[0].nombre;
+  formulario.salario = propiedad.dataValue[0].salario;
+  formulario.area = propiedad.dataValue[0].id_area;
+
+}
 
 const rulesForm = reactive({
   nombre: [
@@ -73,20 +66,16 @@ const rulesForm = reactive({
   ],
 })
 
-
-
-
-
-const limpiarFormulario =()=>{
-    formRef.value.resetFields()    
+const limpiarFormulario = () => {
+  formRef.value.resetFields()
 }
 
-const validarFormulario =  () => {
+const validarFormulario = () => {
 
-    return new Promise ((resolve)=>{
-        formRef.value?.validate((valid)=>{
-            if (valid) {
-              resolve(true)            
+  return new Promise((resolve) => {
+    formRef.value?.validate((valid) => {
+      if (valid) {
+              resolve(true)
             } else {
                 resolve(false)             
             }
@@ -97,8 +86,14 @@ const validarFormulario =  () => {
     
 }
 
-defineExpose({validarFormulario,formulario,limpiarFormulario})
+watch(
+  () => propiedad.dataValue,
+  (newData) => {
+    datosFormulario();
+  }
+);
 
+defineExpose({validarFormulario,formulario,limpiarFormulario})
 
 
 
@@ -107,5 +102,4 @@ defineExpose({validarFormulario,formulario,limpiarFormulario})
 
 
 
-<style scoped>
-</style>
+<style scoped></style>
