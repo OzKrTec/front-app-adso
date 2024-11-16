@@ -35,9 +35,9 @@
   
 
   
-  .el-menu-vertical-demo {
-    width: 250px;
-    min-height: 100%;
-  }
+  .el-menu-vertical-demo{
+  width: fit-content;
+  min-height: 100%;
+}
   </style>
   
