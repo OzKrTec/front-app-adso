@@ -115,7 +115,6 @@ const crearCargo = async () => {
 }
 
 const actualizarCargo = async () => {
-
  
     const url = 'http://127.0.0.1:8000/api/cargos/update'
 
